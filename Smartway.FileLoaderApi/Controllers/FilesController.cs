@@ -19,17 +19,20 @@ public class FilesController : ControllerBase
     private readonly UserManager<AppUser> _userManager;
     private readonly IFileService _fileService;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IConfiguration _config;
 
     public FilesController(
         ILogger<FilesController> logger,
         UserManager<AppUser> userManager,
         IFileService fileService,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IConfiguration config)
     {
         _logger = logger;
         _userManager = userManager;
         _fileService = fileService;
         _unitOfWork = unitOfWork;
+        _config = config;
     }
 
     //1 Пользователь может одним запросом загрузить группу файлов (1...N).
@@ -139,7 +142,7 @@ public class FilesController : ControllerBase
         var link = new OneTimeLink
         {
             Token = token,
-            Expiry = DateTime.UtcNow.AddMinutes(1), // Set an expiry time, e.g., 1 hour
+            Expiry = DateTime.UtcNow.AddHours(_config.GetValue<int>("OneTimeLinkLifetimeInHours")),
             WasUsed = false,
             GroupId = groupId.HasValue ? groupId.Value : files.First().GroupId
         };

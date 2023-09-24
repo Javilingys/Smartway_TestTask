@@ -12,7 +12,24 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  
+  file-loader-svc:
+    image: javilingys/file-loader-svc:latest
+    build:
+      context: .
+      dockerfile: Smartway.FileLoaderApi/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=postgres; Port=5432; User Id=postgres; Password=password; Database=filesDb;
+      - ChunkSizeInKb=16
+      - OneTimeLinkLifetimeInHours=24
+      - CleanerIntervalInSeconds=600
+      - Token__Key=supermegasupermegasupermegasecretkey
+      - Token__Issuer=file-loader-svc
+    ports:
+      - 5100:80
+    depends_on:
+      - postgres
 
 volumes:
   pgdata:

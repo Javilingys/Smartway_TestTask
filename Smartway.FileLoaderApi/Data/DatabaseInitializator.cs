@@ -6,6 +6,8 @@ namespace Smartway.FileLoaderApi.Data;
 
 public static class DatabaseInitializator
 {
+    private static readonly SemaphoreSlim _migratorEvent = new SemaphoreSlim(0);
+
     public static async Task Initialize(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
@@ -53,5 +55,11 @@ public static class DatabaseInitializator
 
         await context.SaveChangesAsync();
         logger.LogInformation("--> Конец сида данных..");
+        _migratorEvent.Release(1);
+    }
+
+    public static Task WaitForMigrationAsync(CancellationToken cancellationToken = default)
+    {
+        return _migratorEvent.WaitAsync(cancellationToken);
     }
 }

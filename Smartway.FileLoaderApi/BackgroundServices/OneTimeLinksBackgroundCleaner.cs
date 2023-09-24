@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Smartway.FileLoaderApi.Data;
+using System.Threading;
 
 namespace Smartway.FileLoaderApi.BackgroundServices;
 
@@ -18,22 +19,24 @@ public class OneTimeLinksBackgroundCleaner : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        await DatabaseInitializator.WaitForMigrationAsync(stoppingToken);
+
+        using var scope = _serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+
         while (!stoppingToken.IsCancellationRequested)
         {
-            await ProcessCleanAsync(stoppingToken);
+            await ProcessCleanAsync(dbContext, stoppingToken);
 
-            await Task.Delay(TimeSpan.FromHours(1), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(config.GetValue<int>("CleanerIntervalInSeconds")), stoppingToken);
         }
     }
 
-    private async Task ProcessCleanAsync(CancellationToken cancellationToken)
+    private async Task ProcessCleanAsync(AppDbContext dbContext, CancellationToken cancellationToken)
     {
         _logger.LogInformation("--> Началась очистка использованных ссылок.");
-
-        using var scope = _serviceProvider.CreateScope();
-
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
+        
         var uselessLinks = await dbContext.OneTimeLinks
             .Where(x => x.WasUsed || x.Expiry <= DateTime.UtcNow)
             .ToListAsync(cancellationToken);
