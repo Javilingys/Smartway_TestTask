@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartway.FileLoaderApi", "Smartway.FileLoaderApi\Smartway.FileLoaderApi.csproj", "{32791F50-2C00-4309-BDC7-EA17CE12A6B5}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A5042472-7181-4983-91E1-BF3D08666197}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32791F50-2C00-4309-BDC7-EA17CE12A6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32791F50-2C00-4309-BDC7-EA17CE12A6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32791F50-2C00-4309-BDC7-EA17CE12A6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32791F50-2C00-4309-BDC7-EA17CE12A6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5042472-7181-4983-91E1-BF3D08666197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5042472-7181-4983-91E1-BF3D08666197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5042472-7181-4983-91E1-BF3D08666197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5042472-7181-4983-91E1-BF3D08666197}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE1D0AB5-870B-403D-8E05-2B7FF21F4843}
+	EndGlobalSection
+EndGlobal
