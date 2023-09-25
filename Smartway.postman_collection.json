@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "5a06b6d7-2fd2-44d3-8379-717398feac42",
+		"name": "Smartway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10989844"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test4@test.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/v1/account/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test3@test.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/v1/account/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Files",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QuY29tIiwibmJmIjoxNjk1NTQxODA5LCJleHAiOjE2OTYxNDY2MDksImlhdCI6MTY5NTU0MTgwOSwiaXNzIjoiZmlsZS1sb2FkZXItc3ZjIn0.IxuQZDjDrHpZZwl_3ovAQzlcH-qxAxPxVReKU1PkKdGcBnUXoyWCAnqq7shTDjApqaKt6Yi7tzr4y6U35kIZ-g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/shkol/Desktop/4.png"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/shkol/Desktop/aspnetcore-developer-roadmap.png"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/shkol/Desktop/shiz2.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5100/api/v1/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate One Time Link",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwibmJmIjoxNjk1MzA2ODE5LCJleHAiOjE2OTU5MTE2MTksImlhdCI6MTY5NTMwNjgxOSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTEwMCJ9.dTiPAB5XtwtsU08ysammRu8IUuDZ9XZWuW01UlWDLFMyoAwyIB4MvbIZgQeQi822RdA0n8sjxa0IZCOCXZw21A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5100/api/v1/files/generate-one-time-link",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						"generate-one-time-link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Time Files",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwibmJmIjoxNjk1MzA2ODE5LCJleHAiOjE2OTU5MTE2MTksImlhdCI6MTY5NTMwNjgxOSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTEwMCJ9.dTiPAB5XtwtsU08ysammRu8IUuDZ9XZWuW01UlWDLFMyoAwyIB4MvbIZgQeQi822RdA0n8sjxa0IZCOCXZw21A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5100/api/v1/Files/one-time/MjFjZDUwNzhkYTM1OWJiZjg3MGJjZjQ2ZGI5MTc5MDkzYzYzYjMzMWEzNzRjYjE5ZWIwNWE2NjBhNDk5OTJlNg%3D%3D",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"Files",
+						"one-time",
+						"MjFjZDUwNzhkYTM1OWJiZjg3MGJjZjQ2ZGI5MTc5MDkzYzYzYjMzMWEzNzRjYjE5ZWIwNWE2NjBhNDk5OTJlNg%3D%3D"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Progress",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwibmJmIjoxNjk1MzA2ODE5LCJleHAiOjE2OTU5MTE2MTksImlhdCI6MTY5NTMwNjgxOSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTEwMCJ9.dTiPAB5XtwtsU08ysammRu8IUuDZ9XZWuW01UlWDLFMyoAwyIB4MvbIZgQeQi822RdA0n8sjxa0IZCOCXZw21A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5100/api/v1/files/progress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						"progress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Loaded Files",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwibmJmIjoxNjk1MzA2ODE5LCJleHAiOjE2OTU5MTE2MTksImlhdCI6MTY5NTMwNjgxOSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTEwMCJ9.dTiPAB5XtwtsU08ysammRu8IUuDZ9XZWuW01UlWDLFMyoAwyIB4MvbIZgQeQi822RdA0n8sjxa0IZCOCXZw21A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5100/api/v1/files/?canSeeAll=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						""
+					],
+					"query": [
+						{
+							"key": "canSeeAll",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download File or Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QzQHRlc3QuY29tIiwibmJmIjoxNjk1MzA2ODE5LCJleHAiOjE2OTU5MTE2MTksImlhdCI6MTY5NTMwNjgxOSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTEwMCJ9.dTiPAB5XtwtsU08ysammRu8IUuDZ9XZWuW01UlWDLFMyoAwyIB4MvbIZgQeQi822RdA0n8sjxa0IZCOCXZw21A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5100/api/v1/files/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5100",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
